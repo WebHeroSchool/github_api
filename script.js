@@ -1,4 +1,4 @@
-var	elBody = document.getElementById('body'),
+const elBody = document.getElementById('body'),
 	elLoad = document.getElementById('preload'),
 	date = new Date,
 	search = new URLSearchParams(window.location.search),
@@ -16,8 +16,7 @@ var	elBody = document.getElementById('body'),
     }, 2100);
 
 if (search.has('username')) {
-	Promise.all([gtDate, getName])
-	fetch('https://api.github.com/users/'+userName)
+	let requestfetch = fetch('https://api.github.com/users/'+userName)
 		.then(res => res.json())
 		.then(json => {
 			if (json.bio === null) {json.bio = 'Информация о себе отсутствует'}
@@ -33,6 +32,7 @@ if (search.has('username')) {
 					'<p>' + date + '</p>'
 			}
 		})
+	Promise.all([gtDate, getName, requestfetch])
 }
 else {
 	document.body.innerHTML = "ошибка: не добавлен адрес пользователя";
