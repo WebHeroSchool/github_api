@@ -1,6 +1,6 @@
-const elBody = document.getElementById('body'),
+var elBody = document.getElementById('body'),
 	elLoad = document.getElementById('preload'),
-	date = new Date,
+ 	date = new Date,
 	search = new URLSearchParams(window.location.search),
 	userName = search.get('username'),
 	gtDate = new Promise((resolve, reject) => {
@@ -16,7 +16,7 @@ const elBody = document.getElementById('body'),
     }, 2100);
 
 if (search.has('username')) {
-	let requestfetch = fetch('https://api.github.com/users/'+userName)
+	 var requestfetch = fetch('https://api.github.com/users/'+userName)
 		.then(res => res.json())
 		.then(json => {
 			if (json.bio === null) {json.bio = 'Информация о себе отсутствует'}
